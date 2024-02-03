@@ -1,0 +1,188 @@
+[gd_scene load_steps=20 format=3 uid="uid://bse16x1dqdiq7"]
+
+[ext_resource type="Texture2D" uid="uid://ckwrcqsad8xc5" path="res://park_bg.png" id="1_ijkrd"]
+[ext_resource type="PackedScene" uid="uid://btrqfwkwmiotl" path="res://player.tscn" id="2_d7o5w"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="3_8y3dr"]
+[ext_resource type="Texture2D" uid="uid://uva726uq60l5" path="res://skater_boy_1.png" id="3_m6g4q"]
+[ext_resource type="Texture2D" uid="uid://dm1uckqcnj140" path="res://skater_2.png" id="4_3s1dc"]
+[ext_resource type="PackedScene" uid="uid://dg721enalo15h" path="res://npc.tscn" id="4_24ffo"]
+[ext_resource type="Texture2D" uid="uid://c12bsvsq3wb5d" path="res://skater_3.png" id="5_swerb"]
+[ext_resource type="PackedScene" uid="uid://dv78xx32yit4x" path="res://dialogue.tscn" id="5_wnmuh"]
+[ext_resource type="Script" path="res://ProgressBar.gd" id="6_84vjq"]
+[ext_resource type="Texture2D" uid="uid://b88lvijw0qw5q" path="res://skater_4.png" id="6_cabh4"]
+[ext_resource type="Texture2D" uid="uid://b6n1qrsjl5lue" path="res://game_over.jpg" id="7_0kivm"]
+[ext_resource type="Texture2D" uid="uid://k7c1jbpv7yvj" path="res://skater_5.png" id="7_lso35"]
+[ext_resource type="Texture2D" uid="uid://dh6bocuqrh0nq" path="res://start_screen.jpg" id="8_7c7wd"]
+[ext_resource type="Script" path="res://Finish.gd" id="9_owh16"]
+[ext_resource type="Texture2D" uid="uid://b6wqb1wh5nynh" path="res://win_screen.jpg" id="9_x2w5x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqov0"]
+bg_color = Color(0.34902, 0.34902, 0.34902, 0.113725)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f28bc"]
+bg_color = Color(0.796078, 0.160784, 0, 1)
+
+[sub_resource type="Theme" id="Theme_57y7t"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_cqov0")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_f28bc")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6756b"]
+size = Vector2(20, 60.4519)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.01629, 1.01629)
+texture = ExtResource("1_ijkrd")
+centered = false
+
+[node name="NPC" parent="." instance=ExtResource("4_24ffo")]
+position = Vector2(928, 600)
+dialogue_number = 3
+texture = ExtResource("3_m6g4q")
+
+[node name="NPC2" parent="." instance=ExtResource("4_24ffo")]
+position = Vector2(1711, 678)
+dialogue_number = 1
+texture = ExtResource("4_3s1dc")
+
+[node name="NPC3" parent="." instance=ExtResource("4_24ffo")]
+position = Vector2(2304, 730)
+dialogue_number = 2
+texture = ExtResource("5_swerb")
+
+[node name="NPC4" parent="." instance=ExtResource("4_24ffo")]
+position = Vector2(2896, 598)
+dialogue_number = 3
+texture = ExtResource("6_cabh4")
+
+[node name="NPC5" parent="." instance=ExtResource("4_24ffo")]
+position = Vector2(3413, 748)
+texture = ExtResource("7_lso35")
+
+[node name="Player" parent="." instance=ExtResource("2_d7o5w")]
+unique_name_in_owner = true
+position = Vector2(624, 712)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(64, -164)
+limit_smoothed = true
+script = ExtResource("3_8y3dr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" parent="CanvasLayer" instance=ExtResource("5_wnmuh")]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 3.0
+offset_top = -86.0
+offset_right = 1158.0
+offset_bottom = 562.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 982.0
+offset_bottom = 713.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Suspicion Level:"
+fit_content = true
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 2
+theme = SubResource("Theme_57y7t")
+value = 50.0
+script = ExtResource("6_84vjq")
+
+[node name="Game_over_screen" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 14.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0kivm")
+
+[node name="start_screen" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 14.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_7c7wd")
+
+[node name="win_screen" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 14.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_x2w5x")
+
+[node name="Finish" type="Area2D" parent="."]
+position = Vector2(3791, 668)
+scale = Vector2(18.2892, -0.0622234)
+
+[node name="Finish" type="CollisionShape2D" parent="Finish"]
+position = Vector2(0, -2957.26)
+scale = Vector2(0.432518, -387.865)
+shape = SubResource("RectangleShape2D_6756b")
+script = ExtResource("9_owh16")
+
+[connection signal="not_ready_for_chat" from="NPC" to="Player" method="_on_npc_not_ready_for_chat"]
+[connection signal="not_ready_for_chat" from="NPC" to="CanvasLayer/DialogueBox" method="_on_npc_not_ready_for_chat"]
+[connection signal="ready_for_chat" from="NPC" to="Player" method="_on_npc_ready_for_chat"]
+[connection signal="not_ready_for_chat" from="NPC2" to="Player" method="_on_npc_not_ready_for_chat"]
+[connection signal="ready_for_chat" from="NPC2" to="Player" method="_on_npc_ready_for_chat"]
+[connection signal="not_ready_for_chat" from="NPC3" to="Player" method="_on_npc_not_ready_for_chat"]
+[connection signal="ready_for_chat" from="NPC3" to="Player" method="_on_npc_ready_for_chat"]
+[connection signal="not_ready_for_chat" from="NPC4" to="Player" method="_on_npc_not_ready_for_chat"]
+[connection signal="ready_for_chat" from="NPC4" to="Player" method="_on_npc_ready_for_chat"]
+[connection signal="not_ready_for_chat" from="NPC5" to="Player" method="_on_npc_not_ready_for_chat"]
+[connection signal="ready_for_chat" from="NPC5" to="Player" method="_on_npc_ready_for_chat"]
+[connection signal="game_over" from="Player" to="Player" method="_on_game_over"]
+[connection signal="input_event" from="Player" to="Player" method="_on_input_event"]
+[connection signal="best_chosen" from="CanvasLayer/DialogueBox" to="Player" method="_on_dialogue_box_best_chosen"]
+[connection signal="dialogue_finished" from="CanvasLayer/DialogueBox" to="Player" method="_on_dialogue_box_dialogue_finished"]
+[connection signal="mid_chosen" from="CanvasLayer/DialogueBox" to="Player" method="_on_dialogue_box_mid_chosen"]
+[connection signal="worst_chosen" from="CanvasLayer/DialogueBox" to="Player" method="_on_dialogue_box_worst_chosen"]
+[connection signal="body_entered" from="Finish" to="Player" method="_on_finish_body_entered"]

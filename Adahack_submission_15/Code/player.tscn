@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://btrqfwkwmiotl"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_xs56e"]
+[ext_resource type="Texture2D" uid="uid://dmcooa5evuhtm" path="res://13feet.png" id="2_ou8hd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcf8l"]
+atlas = ExtResource("2_ou8hd")
+region = Rect2(1025, 0, 1025, 770)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc7ta"]
+atlas = ExtResource("2_ou8hd")
+region = Rect2(2050, 0, 1025, 770)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t55bo"]
+atlas = ExtResource("2_ou8hd")
+region = Rect2(0, 770, 1025, 770)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d3y0"]
+atlas = ExtResource("2_ou8hd")
+region = Rect2(1025, 770, 1025, 770)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn1ow"]
+atlas = ExtResource("2_ou8hd")
+region = Rect2(2050, 770, 1025, 770)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g74ot"]
+atlas = ExtResource("2_ou8hd")
+region = Rect2(0, 1540, 1025, 770)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1vc6"]
+atlas = ExtResource("2_ou8hd")
+region = Rect2(1025, 1540, 1025, 770)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnsju"]
+atlas = ExtResource("2_ou8hd")
+region = Rect2(2050, 1540, 1025, 770)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b10xg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcf8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc7ta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t55bo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d3y0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn1ow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g74ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1vc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnsju")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfe3o"]
+size = Vector2(98, 66)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_xs56e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.974026, 0.974026)
+sprite_frames = SubResource("SpriteFrames_b10xg")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 64)
+shape = SubResource("RectangleShape2D_yfe3o")
+
+[node name="Node2D" type="Node2D" parent="."]

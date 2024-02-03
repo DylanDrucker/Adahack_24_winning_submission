@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg721enalo15h"]
+
+[ext_resource type="Script" path="res://npc.gd" id="1_ohxol"]
+[ext_resource type="Texture2D" uid="uid://dm1uckqcnj140" path="res://skater_2.png" id="2_lhkaj"]
+[ext_resource type="Texture2D" uid="uid://wxf8nfpaht4f" path="res://chat.bmp" id="3_17eb8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5f4t"]
+size = Vector2(246.75, 549)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ohxol")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+y_sort_enabled = true
+position = Vector2(2.625, 28.5)
+shape = SubResource("RectangleShape2D_e5f4t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.761538, 0.761538)
+texture = ExtResource("2_lhkaj")
+
+[node name="Chat" type="Sprite2D" parent="Area2D/Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(144.444, -164.141)
+scale = Vector2(0.450695, 0.512946)
+texture = ExtResource("3_17eb8")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

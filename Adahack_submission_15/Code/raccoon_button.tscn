@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjm4dcdh4po3u"]
+
+[ext_resource type="Texture2D" uid="uid://dsna3vvi2ep7d" path="res://raccoon head.webp" id="1_35y0i"]
+[ext_resource type="Script" path="res://RaccoonButton.gd" id="1_upyoj"]
+
+[node name="Button" type="Button"]
+anchors_preset = -1
+anchor_right = 0.201
+anchor_bottom = 0.151
+offset_right = 0.447998
+offset_bottom = 0.151993
+size_flags_horizontal = 3
+text = "Option 1"
+script = ExtResource("1_upyoj")
+
+[node name="RaccoonHead" type="Sprite2D" parent="."]
+position = Vector2(168, 185)
+scale = Vector2(0.227273, 0.227273)
+texture = ExtResource("1_35y0i")

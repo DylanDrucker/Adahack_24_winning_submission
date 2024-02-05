@@ -1,2 +1,2 @@
-RACHEL THE RACCOON(S)
+RACHEL THE RACCOON(S):
 In this game built using Godot, you play as three raccoons in a trench coat pretending to be a human. As the raccoons, you walk around a skate park and interact with skater boys who ask you simple questions in Spanish. To avoid suspicion, you need to respond in fluent Spanish (as generated through Chatbot API) from three responses of varying levels of grammatical correctness. If you answer incorrectly, the level of suspicion that you may in fact be three racoons in a trench coat, and not a human being, rises.
